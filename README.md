@@ -11,6 +11,33 @@ Dwm is an extremely fast, small, and dynamic window manager for X.  This is my p
 + statuspadding (horizontal and vertical padding in the status bar are now configurable options)
 + uselessgap (adding gaps when more than one window)
 
+# Installing dwm-distrotube on Arch Linux
+
+All you need to do is download the PKGBUILD from this repository.  Then run the following command:
+
+	makepkg -cf
+	
+This will create a file that ends in .pkg.tar.xz (for example, dwm-distrotube-6.2-1-x86_64.pkg.tar.xz).  Then run:
+
+	sudo pacman -U *.pkg.tar.xz 
+	
+Alternately, you could also install dwm-distrotube from the AUR using an AUR helper such as yay:
+
+	yay -S dwm-distrotube
+	
+NOTE: Installing dwm-distrotube conflicts with the standard dwm package.  If you already have dwm installed, you will be asked if you want to remove dwm and install dwm-distrotube instead. 
+	
+	
+# Installing dwm-distrotube on other Linux distrtibutions
+
+Download the source code from this repository or use a git clone:
+
+	git clone https://gitlab.com/dwt1/dwm-distrotube.git
+	cd dwm-distrotube
+    sudo make clean install
+	
+NOTE: Installing dwm-distrotube will overwrite your existing dwm installation.
+	
 # My Keybindings
 
 The MODKEY is set to the Super key (aka the Windows key).  I try to keep the
@@ -34,10 +61,6 @@ keybindings consistent with all of my window managers.
 | `MODKEY + .` | focusmon +1 (switches focus next monitors) |
 | `MODKEY + ,` | focusmon -1 (switches focus to prev monitors) |
 
-Afterwards enter the following command to build and install dwm :
-
-    sudo make clean install
-
 
 # Running dwm
 
@@ -45,7 +68,7 @@ If you do not use a login manager (like lightdm) then you can add the following 
 
     exec dwm
 	
-If you use a login manager, make sure that you have a file called dwm.desktop in your /usr/share/xsessions/ directory.  It should look something like this:
+If you use a login manager (like lightdm), make sure that you have a file called dwm.desktop in your /usr/share/xsessions/ directory.  It should look something like this:
 
 	[Desktop Entry]
 	Encoding=UTF-8
@@ -73,9 +96,9 @@ like this in your .xinitrc:
     exec dwm
 
 
-# Configuration
+# Configuring dwm-distrotube
 
-The configuration of dwm is done by creating a custom config.h
-and (re)compiling the source code:
+If you installed dwm-distrotube using the AUR, then the source code can be found in /opt/dwm-distrotube.  If you downloaded the source and built dwm-distrotube yourself, then the source in the directory that you downloaded.  The configuration of dwm-distrotube is done by editng the config.h and (re)compiling the source code.  
 
 	sudo make install
+	
