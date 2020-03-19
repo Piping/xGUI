@@ -102,3 +102,15 @@ If you installed dwm-distrotube using the AUR, then the source code can be found
 
 	sudo make install
 	
+# Adding an autostart file
+
+dwm-distrotube has been patched in such a way that it looks for an autostart file at: $HOME/.dwm/autostart.sh
+
+You will need to create this file and the directory that it is located.  An example autostart.sh is included below:
+
+	#! /bin/bash 
+	compton &
+	nitrogen --restore &
+	dwmblocks &
+	
+The example autostart.sh above launches the compton compositor, sets the wallpaper with nitrogen and launches dwmblocks to add some widgets to our dwm panel.  Obviously, you would need to install compton and nitrogen to use those programs in your autostart.  And you would need to install [dwmblocks](https://gitlab.com/dwt1/dotfiles/-/tree/master/dwmblocks) to use it.  To use my dwmblocks, you also need to download the scripts found [here](https://gitlab.com/dwt1/dotfiles/-/tree/master/.local%2Fbin).
