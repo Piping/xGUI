@@ -22,6 +22,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
+  mkdir -p "${pkgname}" || return 1
   cd "${pkgname}"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
@@ -33,5 +34,6 @@ package() {
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/${pkgname}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
 
