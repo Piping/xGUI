@@ -17,18 +17,18 @@ All you need to do is download the PKGBUILD from this repository.  Then run the 
 
 	makepkg -cf
 	
-This will create a file that ends in .pkg.tar.xz (for example, dwm-distrotube-6.2-1-x86_64.pkg.tar.xz).  Then run:
+This will create a file that ends in .pkg.tar.xz (for example, dwm-distrotube-git-6.2-1-x86_64.pkg.tar.xz).  Then run:
 
 	sudo pacman -U *.pkg.tar.xz 
 	
-Alternately, you could also install dwm-distrotube from the AUR using an AUR helper such as yay:
+Alternately, you could also install dwm-distrotube-git from the AUR using an AUR helper such as yay:
 
-	yay -S dwm-distrotube
+	yay -S dwm-distrotube-git
 	
-NOTE: Installing dwm-distrotube conflicts with the standard dwm package.  If you already have dwm installed, you will be asked if you want to remove dwm and install dwm-distrotube instead. 
+NOTE: Installing dwm-distrotube-git conflicts with the standard dwm package.  If you already have dwm installed, you will be asked if you want to remove dwm and install dwm-distrotube-git instead. 
 	
 	
-# Installing dwm-distrotube on other Linux distrtibutions
+# Installing dwm-distrotube on other Linux distributions
 
 Download the source code from this repository or use a git clone:
 
@@ -81,7 +81,7 @@ If you use a login manager (like lightdm), make sure that you have a file called
 
 # Configuring dwm-distrotube
 
-If you installed dwm-distrotube using the AUR, then the source code can be found in /opt/dwm-distrotube.  If you downloaded the source and built dwm-distrotube yourself, then the source in the directory that you downloaded.  The configuration of dwm-distrotube is done by editng the config.h and (re)compiling the source code.  
+If you installed dwm-distrotube-git using the AUR, then the source code can be found in /opt/dwm-distrotube-git.  If you downloaded the source and built dwm-distrotube yourself, then the source in the directory that you downloaded.  The configuration of dwm-distrotube is done by editng the config.h and (re)compiling the source code.  
 
 	sudo make install
 	
