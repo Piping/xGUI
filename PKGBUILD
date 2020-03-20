@@ -1,5 +1,5 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
-pkgname=dwm-distrotube
+pkgname=dwm-distrotube-git
 pkgver=6.2
 pkgrel=1
 pkgdesc="A heavily-patched and customized build of dwm from DistroTube."
@@ -21,16 +21,21 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+  cd "${_pkgname}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
 build() {
-  mkdir -p "${pkgname}" || return 1
   cd "${pkgname}"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-  cd "${pkgname}"  
-  mkdir -p $pkgdir/opt/dwm-distrotube || return 1
-  cp -rf * $pkgdir/opt/dwm-distrotube || return 1
+  cd dwm-distrotube  
+  mkdir -p ${pkgdir}/opt/${pkgname}
+  cp -rf * ${pkgdir}/opt/${pkgname}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"

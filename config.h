@@ -137,8 +137,9 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask, XK_i,      spawn,          CMD("./.dmenu/dmenu-scrot.sh") },
     
     /* Apps Launched with SUPER + ALT + KEY */
+	{ MODKEY|Mod1Mask,        XK_b,    spawn,          CMD("surf suckless.org") },
 	{ MODKEY|Mod1Mask,        XK_l,    spawn,          CMD("st -e lynx gopher://distro.tube") },
-	{ MODKEY|Mod1Mask,        XK_f,    spawn,          CMD("st -e sh ./.config/vifm/scripts/vifmrun") },
+	{ MODKEY|Mod1Mask,        XK_f,    spawn,          CMD("st -e vifm") },
 	{ MODKEY|Mod1Mask,        XK_i,    spawn,          CMD("st -e irssi") },
 	{ MODKEY|Mod1Mask,        XK_n,    spawn,          CMD("st -e newsboat") },
 	{ MODKEY|Mod1Mask,        XK_r,    spawn,          CMD("st -e rtv") },
@@ -173,5 +174,4 @@ static Button buttons[] = {
 	{ ClkTagBar,       MODKEY,      Button1,        tag,            {0} },
 	{ ClkTagBar,       MODKEY,      Button3,        toggletag,      {0} },
 };
-
 
