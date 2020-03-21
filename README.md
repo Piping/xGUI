@@ -11,6 +11,12 @@ Dwm is an extremely fast, small, and dynamic window manager for X.  This is my p
 + statuspadding (horizontal and vertical padding in the status bar are now configurable options)
 + uselessgap (adding gaps when more than one window)
 
+# Dependencies
+
+This dwm build expects st (the simple terminal) and dmenu to be installed on your system.  It is strongly recommended you install those before logging into dwm, otherwise you will be in for a tough time since you will not have access to the terminal or the run launcher that this build will be looking for.
+
+Also, if you are building this on an Ubuntu-based system, you need to install libx11-dev and xorg-dev.
+
 # Installing dwm-distrotube on Arch Linux
 
 All you need to do is download the PKGBUILD from this repository.  Then run the following command:
