@@ -1,0 +1,12 @@
+# : for repeated chord
+# ; for oneshot chord
+# : ; cannot be used for same start sequence
+# + for modifier combo
+
+#xdotool key --window $(xdotool search --classname dwm) key alt+1
+
+super + r
+ rofi -dpi 1 -show run
+
+alt + Return
+ /usr/bin/gnome-terminal
