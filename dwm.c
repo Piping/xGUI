@@ -1506,6 +1506,7 @@ run(void)
 
 void
 runAutostart(void) {
+	system("cd ~/.config/dwm; ./autostart_blocking.sh");
 	system("cd ~/.config/dwm; ./autostart.sh &");
 }
 
@@ -1638,6 +1639,12 @@ setlayout(const Arg *arg)
 		arrange(selmon);
 	else
 		drawbar(selmon);
+}
+
+void
+toggle_mono_tile(const Arg *arg)
+{
+    if(arg->v == &layouts[0]);
 }
 
 /* arg > 1.0 will set mfact absolutely */
@@ -1786,6 +1793,8 @@ sigterm(int unused)
 void
 spawn(const Arg *arg)
 {
+	/* if (arg->v == dmenucmd) */
+	/* 	dmenumon[0] = '0' + selmon->num; */
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
