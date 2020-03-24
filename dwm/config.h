@@ -82,6 +82,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,               XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,               XK_a,      lastview,       {0} },
+	{ MODKEY,               XK_Tab,    lastview,       {0} },
 	{ MODKEY,               XK_w,      untag_self,     {0} },
 	{ MODKEY,               XK_z,      setlayout,      {0} },
 	{ MODKEY,               XK_f,      togglefloating, {0} },
