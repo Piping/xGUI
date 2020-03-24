@@ -5,8 +5,8 @@
 
 #xdotool key --window $(xdotool search --classname dwm) key alt+1
 
-super + r
- rofi -dpi 1 -show run
+alt + r
+ rofi -dpi 1 -show run  -theme ~/.config/rofi/themes/powermenu.rasi
 
-alt + Return
- /usr/bin/gnome-terminal
+super + x
+ /usr/bin/bash ~/.config/rofi/scripts/powermenu.sh
