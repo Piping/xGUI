@@ -61,18 +61,23 @@ static const Layout layouts[] = {
 	{ NULL,      NULL },
 };
 
+static const char *termcmd[]  = { "/usr/bin/gnome-terminal", NULL };
+static const char *browser[]  = { "/usr/bin/firefox", NULL };
+
 /* key definitions */
 #define MODKEY Mod1Mask
 static Key keys[] = {
 	/* modifier             key        function        argument */
 	{ MODKEY,               XK_q,      killclient,     {0} },
-    { MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
+	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
-    /* Switch to specific layouts */
+	{ MODKEY,               XK_Return, spawn,          {.v = termcmd} },
+	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browser} },
+	/* Switch to specific layouts */
 	{ MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_m,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,               XK_g,      setlayout,      {.v = &layouts[2]} },
-    /* Layout manipulation */
+	/* Layout manipulation */
 	{ MODKEY,               XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,               XK_h,      setmfact,       {.f = -0.05} },
@@ -86,7 +91,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_w,      untag_self,     {0} },
 	{ MODKEY,               XK_z,      setlayout,      {0} },
 	{ MODKEY,               XK_f,      togglefloating, {0} },
-    /* Switching between monitors */
+	/* Switching between monitors */
 	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = -1 } },
