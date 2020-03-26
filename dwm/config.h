@@ -57,7 +57,8 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[tile]",  tile },    /* first entry is default */
 	{ "[max]",   monocle },
-	{ "[grid]",  grid },
+	/* { "[grid]",  grid }, */
+	/* { "[float]",  NULL }, */
 	{ NULL,      NULL },
 };
 
@@ -74,9 +75,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_Return, spawn,          {.v = termcmd} },
 	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browser} },
 	/* Switch to specific layouts */
-	{ MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,               XK_m,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,               XK_g,      setlayout,      {.v = &layouts[2]} },
+	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
+	/* { MODKEY,               XK_g,      setlayout,      {.v = &layouts[2]} }, */
 	/* Layout manipulation */
 	{ MODKEY,               XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
@@ -89,7 +89,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_a,      lastview,       {0} },
 	{ MODKEY,               XK_Tab,    lastview,       {0} },
 	{ MODKEY,               XK_w,      untag_self,     {0} },
-	{ MODKEY,               XK_z,      setlayout,      {0} },
+	{ MODKEY,               XK_m,      setlayout,      {0} }, /* switch between layouts */
+	{ MODKEY,               XK_z,      zoom,           {0} }, /* make the window master tile */
 	{ MODKEY,               XK_f,      togglefloating, {0} },
 	/* Switching between monitors */
 	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
@@ -124,7 +125,6 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click           event mask   button          function        argument */
 	{ ClkLtSymbol,     0,           Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,     0,           Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,     0,           Button2,        zoom,           {0} },
 	{ ClkStatusText,   0,           Button2,        view,           {0} },
 	{ ClkClientWin,    MODKEY,      Button1,        movemouse,      {0} },
