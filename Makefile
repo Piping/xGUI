@@ -22,3 +22,15 @@ sync:
 	# cp -r ~/.confid/rofi config/
 	cp -r ~/.config/sxhkd config/
 	cp -r ~/.config/dwm config/
+
+kvm-bootstrap:
+	sudo apt install qemu qemu-system virt-manager ebtables
+	sudo systemctl enable --now libvirtd
+	sudo usermod -G libvirtd -a robin
+
+kvm-convert:
+	sudo qemu-img convert -f vid -O "${DISK}" "/var/lib/libvirt/images/${DISK}.qcow2"
+
+font: #patched fonts
+	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+	cd nerd-fonts && chmod +x install.sh && sudo ./install.sh -S
