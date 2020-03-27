@@ -199,7 +199,7 @@ static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
-static void rotatestack(const Arg *arg);
+static void movestack(const Arg *arg);
 static void run(void);
 static void runAutostart(void);
 static void scan(void);
@@ -1462,34 +1462,51 @@ restack(Monitor *m)
 }
 
 void
-rotatestack(const Arg *arg)
-{
-	Client *c = NULL, *f;
+movestack(const Arg *arg) {
+	Client *c = NULL, *p = NULL, *pc = NULL, *i;
 
-	if (!selmon->sel)
-		return;
-	f = selmon->sel;
-	if (arg->i > 0) {
-		for (c = nexttiled(selmon->clients); c && nexttiled(c->next); c = nexttiled(c->next));
-		if (c){
-			detach(c);
-			attach(c);
-			detachstack(c);
-			attachstack(c);
-		}
-	} else {
-		if ((c = nexttiled(selmon->clients))){
-			detach(c);
-			enqueue(c);
-			detachstack(c);
-			enqueuestack(c);
-		}
+	if(arg->i > 0) {
+		/* find the client after selmon->sel */
+		for(c = selmon->sel->next; c && (!ISVISIBLE(c) || c->isfloating); c = c->next);
+		if(!c)
+			for(c = selmon->clients; c && (!ISVISIBLE(c) || c->isfloating); c = c->next);
+
 	}
-	if (c){
+	else {
+		/* find the client before selmon->sel */
+		for(i = selmon->clients; i != selmon->sel; i = i->next)
+			if(ISVISIBLE(i) && !i->isfloating)
+				c = i;
+		if(!c)
+			for(; i; i = i->next)
+				if(ISVISIBLE(i) && !i->isfloating)
+					c = i;
+	}
+	/* find the client before selmon->sel and c */
+	for(i = selmon->clients; i && (!p || !pc); i = i->next) {
+		if(i->next == selmon->sel)
+			p = i;
+		if(i->next == c)
+			pc = i;
+	}
+
+	/* swap c and selmon->sel selmon->clients in the selmon->clients list */
+	if(c && c != selmon->sel) {
+		Client *temp = selmon->sel->next==c?selmon->sel:selmon->sel->next;
+		selmon->sel->next = c->next==selmon->sel?c:c->next;
+		c->next = temp;
+
+		if(p && p != c)
+			p->next = c;
+		if(pc && pc != selmon->sel)
+			pc->next = selmon->sel;
+
+		if(selmon->sel == selmon->clients)
+			selmon->clients = c;
+		else if(c == selmon->clients)
+			selmon->clients = selmon->sel;
+
 		arrange(selmon);
-		//unfocus(f, 1);
-		focus(f);
-		restack(selmon);
 	}
 }
 

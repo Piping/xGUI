@@ -2,7 +2,7 @@
 /* appearance */
 static const unsigned int borderpx    = 2;        /* border pixel of windows */
 static const unsigned int snap        = 32;       /* snap pixel */
-static const unsigned int gappx       = 6;        /* pixel gap between clients */
+static const unsigned int gappx       = 5;        /* pixel gap between clients */
 static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 1;        /* 0 means bottom bar */
 static const int horizpadbar          = 6;        /* horizontal padding for statusbar */
@@ -55,8 +55,8 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[tile]",  tile },    /* first entry is default */
-	{ "[max]",   monocle },
+	{ "[List]",  tile },    /* first entry is default */
+	{ "[Max]",   monocle },
 	/* { "[grid]",  grid }, */
 	/* { "[float]",  NULL }, */
 	{ NULL,      NULL },
@@ -82,8 +82,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,               XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,               XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,     XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_k,      rotatestack,    {.i = -1 } },
+	{ MODKEY|ShiftMask,     XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,               XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,               XK_a,      lastview,       {0} },
