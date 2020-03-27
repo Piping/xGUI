@@ -7,9 +7,9 @@ static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 1;        /* 0 means bottom bar */
 static const int horizpadbar          = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar           = 7;        /* vertical padding for statusbar */
-static const char *fonts[]            = {"Mononoki Nerd Font:size=9", 
+static const char *fonts[]            = {"InconsolataGo Nerd Font Mono Regular:size=9", 
+										 "Mononoki Nerd Font:size=9:antialias=true:autohint=true", 
 										 "Noto Sans Mono:size=9:antialias=true:autohint=true", 
-										 "Symbola:size=9:antialias=true:autohint=true", 
 										 "Monospace:size=9:antialias=true:autohint=true"
 										};
 static const char col_gray1[]         = "#282a36";
@@ -52,12 +52,10 @@ static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
-#include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[List]",  tile },    /* first entry is default */
-	{ "[Max]",   monocle },
-	/* { "[grid]",  grid }, */
+	{ "[Stack]",  tile },    /* first entry is default */
+	/* { "[Max]",   monocle }, */
 	/* { "[float]",  NULL }, */
 	{ NULL,      NULL },
 };
@@ -76,8 +74,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browser} },
 	/* Switch to specific layouts */
 	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
-	/* { MODKEY,               XK_g,      setlayout,      {.v = &layouts[2]} }, */
-	/* Layout manipulation */
+	/* { MODKEY,               XK_m,      setlayout,      {0} }, /1* switch between layouts *1/ */
+	/* Window List manipulation */
 	{ MODKEY,               XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,               XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,               XK_h,      setmfact,       {.f = -0.05} },
@@ -89,7 +87,6 @@ static Key keys[] = {
 	{ MODKEY,               XK_a,      lastview,       {0} },
 	{ MODKEY,               XK_Tab,    lastview,       {0} },
 	{ MODKEY,               XK_w,      untag_self,     {0} },
-	{ MODKEY,               XK_m,      setlayout,      {0} }, /* switch between layouts */
 	{ MODKEY,               XK_z,      zoom,           {0} }, /* make the window master tile */
 	{ MODKEY,               XK_f,      togglefloating, {0} },
 	/* Switching between monitors */
@@ -104,9 +101,9 @@ static Key keys[] = {
      * Alt to view different tags*/
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,              KEY,      view,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,  KEY,      toggleview,      {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,    KEY,      toggleview,      {.ui = 1 << TAG} }, \
 	{ Mod4Mask,            KEY,      toggletag_view,  {.ui = 1 << TAG} }, \
-	{ Mod4Mask|ShiftMask,  KEY,      tag,             {.ui = 1 << TAG} }
+	{ Mod4Mask|ShiftMask,  KEY,      tag,             {.ui = 1 << TAG} } 
 	TAGKEYS(XK_1, 0),
 	TAGKEYS(XK_2, 1),
 	TAGKEYS(XK_3, 2),
@@ -124,7 +121,7 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click           event mask   button          function        argument */
-	{ ClkLtSymbol,     0,           Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,     0,           Button1,        zoom,           {0} },
 	{ ClkWinTitle,     0,           Button2,        zoom,           {0} },
 	{ ClkStatusText,   0,           Button2,        view,           {0} },
 	{ ClkClientWin,    MODKEY,      Button1,        movemouse,      {0} },
