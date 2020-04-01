@@ -355,7 +355,7 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
 			FcPatternAddBool(fcpattern, FC_COLOR, FcFalse);
 
 			FcConfigSubstitute(NULL, fcpattern, FcMatchPattern);
-			FcDefaultSubstitute(fcpattern);
+			/* FcDefaultSubstitute(fcpattern); */
 			match = XftFontMatch(drw->dpy, drw->screen, fcpattern, &result);
 
 			FcCharSetDestroy(fccharset);
