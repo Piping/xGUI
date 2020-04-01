@@ -55,13 +55,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[List]",  tile },    /* first entry is default */
-	/* { "[Max]",   monocle }, */
+	{ "[Max]",   monocle },
 	/* { "[float]",  NULL }, */
 	{ NULL,      NULL },
 };
-
-static const char *termcmd[]  = { "/usr/bin/gnome-terminal", NULL };
-static const char *browser[]  = { "/usr/bin/firefox", NULL };
 
 /* key definitions */
 #define MODKEY Mod1Mask
@@ -70,8 +67,6 @@ static Key keys[] = {
 	{ MODKEY,               XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
-	{ MODKEY,               XK_Return, spawn,          {.v = termcmd} },
-	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browser} },
 	/* Switch to specific layouts */
 	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
 	/* { MODKEY,               XK_m,      setlayout,      {0} }, /1* switch between layouts *1/ */
@@ -88,7 +83,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_Tab,    lastview,       {0} },
 	{ MODKEY,               XK_w,      untag_self,     {0} },
 	{ MODKEY,               XK_z,      zoom,           {0} }, /* make the window master tile */
-	{ MODKEY,               XK_f,      togglefloating, {0} },
+	{ MODKEY,               XK_f,      setlayout,      {0} },
+	{ MODKEY|ShiftMask,     XK_f,      togglefloating, {0} },
 	/* Switching between monitors */
 	{ MODKEY,               XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
