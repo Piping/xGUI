@@ -4,7 +4,7 @@ set -e
 bootstrap() {
 	sudo apt install -y curl git
 	sudo apt install -y build-essential libx11-dev xorg-dev
-	sudo apt install -y sxhkd i3lock rofi xwallpaper
+	sudo apt install -y sxhkd i3lock rofi xwallpaper scrot feh
 }
 
 dwn() {
