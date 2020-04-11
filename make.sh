@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 bootstrap() {
 	sudo apt install -y curl git
 	sudo apt install -y build-essential libx11-dev xorg-dev
