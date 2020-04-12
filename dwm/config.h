@@ -72,7 +72,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 static Key keys[] = {
 	/* modifier             key        function        argument */
 	{ MODKEY,               XK_q,      killclient,     {0} },
@@ -110,8 +110,8 @@ static Key keys[] = {
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,              KEY,      view,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,    KEY,      toggleview,      {.ui = 1 << TAG} }, \
-	{ Mod4Mask,            KEY,      toggletag_view,  {.ui = 1 << TAG} }, \
-	{ Mod4Mask|ShiftMask,  KEY,      tag,             {.ui = 1 << TAG} } 
+	{ Mod1Mask,            KEY,      toggletag_view,  {.ui = 1 << TAG} }, \
+	{ Mod1Mask|ShiftMask,  KEY,      tag,             {.ui = 1 << TAG} } 
 	TAGKEYS(XK_1, 0),
 	TAGKEYS(XK_2, 1),
 	TAGKEYS(XK_3, 2),
@@ -122,7 +122,7 @@ static Key keys[] = {
 	TAGKEYS(XK_8, 7),
 	TAGKEYS(XK_9, 8),
 	{ MODKEY,              XK_0,     view,            {.ui = ~0 } },
-	{ Mod4Mask,            XK_0,     tag,             {.ui = ~0 } },
+	{ Mod1Mask,            XK_0,     tag,             {.ui = ~0 } },
 };
 
 /* button definitions */

@@ -18,10 +18,15 @@ Dwm is an extremely fast, small, and dynamic window manager for X.  This is my p
 # Keybinding
 
     modify the ~/.config/sxhkd/sxhkdrc file to use your selected browser and terminals etc
+    to mimic my current keyboard uses, add the following line into your ~/.bashrc
+
+    # check more binding info using : grep alt /usr/share/X11/xkb/rules/evdev.lst | grep win
+    setxkbmap -option "altwin:swap_alt_win"
+    setxkbmap -option "caps:escape"
 
 # My DWM built-in Keybindings
 
-The MODKEY is set to the Alt key. 
+The MODKEY is set to the Win/Super/Command key. 
 
 | Keybinding | Action |
 | :--- | :--- |
@@ -31,6 +36,7 @@ The MODKEY is set to the Alt key.
 | `MODKEY +  w` | untag current window from current tag |
 | `MODKEY +  f` | toggle monocle mode to maximize the current window |
 | `MODKEY +  z` | set the current window to be first one in list |
+| `MODKEY +  b` | toggle statur bar at the top |
 | `MODKEY + SHIFT + r` | restarts dwm |
 | `MODKEY + 1-9` | switch focus to workspace (1-9) |
 | `MODKEY + SHIFT + 1-9` | tag current window with the new tag and switch to the tag (1-9) |
