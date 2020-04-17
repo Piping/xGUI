@@ -245,6 +245,7 @@ static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
 static void lastview(const Arg *arg);
+static void laststack(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -2356,6 +2357,15 @@ updatewmhints(Client *c)
 			c->neverfocus = 0;
 		XFree(wmh);
 	}
+}
+
+void
+laststack(const Arg *arg)
+{
+    static Arg next = {0};
+    if ( next.i == 0 ) next.i = arg->i;
+    focusstack(&next);
+    next.i = next.i == 1 ? -1 : 1 ;
 }
 
 void

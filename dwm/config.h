@@ -90,9 +90,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_k,      pushup,         {0} },
 	{ MODKEY,               XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,               XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,               XK_a,      lastview,       {0} },
-	{ MODKEY,               XK_Tab,    focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_Tab,    focusstack,     {.i = -1 } },
+	{ MODKEY,               XK_a,      laststack,      {.i = +1 } },
+	{ MODKEY,               XK_Tab,    lastview,       {.i =  0 } },
 	{ MODKEY,               XK_w,      untag_self,     {0} },
 	{ MODKEY,               XK_z,      zoom,           {0} }, /* make the window master tile */
 	{ MODKEY,               XK_f,      setlayout,      {0} },
