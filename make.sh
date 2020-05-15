@@ -4,7 +4,9 @@ set -e
 bootstrap() {
 	sudo apt install -y curl git
 	sudo apt install -y build-essential libx11-dev xorg-dev
-	sudo apt install -y sxhkd i3lock rofi xwallpaper scrot feh
+	sudo apt install -y sxhkd i3lock rofi xwallpaper scrot feh zathura{,-ps,-cb,-djvu}
+    # xvkbd -text hello
+	sudo apt install -y xvkbd
 }
 
 dwn() {
@@ -48,6 +50,11 @@ kvm-convert() {
 font() {
 	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
 	cd nerd-fonts && chmod +x install.sh && sudo ./install.sh -S
+}
+
+cli-visualizer() {
+    sudo apt install libfftw3-dev libncursesw5-dev cmake libpulse-dev
+    git clone https://github.com/dpayne/cli-visualizer.git && cd cli-visualizer && ./install.sh
 }
 
 "$@"
