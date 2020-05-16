@@ -169,20 +169,32 @@
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Monokai)
+# Colors (Monokai Theme)
 colors:
 
   primary:
    background: '#221e2d'
    foreground: '#d1d1d1'
 
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '#9a9a9a'
-    #bright_foreground: '#ffffff'
+  normal:
+    black:   '#272822'
+    red:     '#f92672'
+    green:   '#b9ca4a'
+    yellow:  '#e6c547'
+    blue:    '#66d9ef'
+    magenta: '#ae81ff'
+    cyan:    '#70c0ba'
+    white:   '#eaeaea'
+
+  bright:
+    black:   '#75715e'
+    red:     '#f92672'
+    green:   '#a6e22e'
+    yellow:  '#f4bf75'
+    blue:    '#66d9ef'
+    magenta: '#ae81ff'
+    cyan:    '#a1efe4'
+    white:   '#f8f8f2'
 
   # Cursor colors
   #
@@ -209,26 +221,6 @@ colors:
   #selection:
   #  text: '#eaeaea'
   #  background: '#404040'
-
-  normal:
-    black:   '#272822'
-    red:     '#f92672'
-    green:   '#b9ca4a'
-    yellow:  '#e6c547'
-    blue:    '#7aa6da'
-    magenta: '#ae81ff'
-    cyan:    '#70c0ba'
-    white:   '#eaeaea'
-
-  bright:
-    black:   '#75715e'
-    red:     '#f92672'
-    green:   '#a6e22e'
-    yellow:  '#f4bf75'
-    blue:    '#66d9ef'
-    magenta: '#ae81ff'
-    cyan:    '#a1efe4'
-    white:   '#f8f8f2'
 
   # Dim colors
   #
@@ -549,7 +541,8 @@ colors:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
-#key_bindings:
+key_bindings:
+  - { key: RBracket, mods: Super,                 action: Paste          }
   #- { key: Paste,                                action: Paste          }
   #- { key: Copy,                                 action: Copy           }
   #- { key: L,         mods: Control,             action: ClearLogNotice }
