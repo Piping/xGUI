@@ -81,8 +81,8 @@ static Key keys[] = {
 	/* modifier             key        function        argument */
 	{ MODKEY,               XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
-	{ MODKEY,               XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browsercmd } },
+    { MODKEY,               XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browsercmd } },
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	/* Switch to specific layouts */
 	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
