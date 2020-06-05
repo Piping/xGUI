@@ -1,7 +1,8 @@
 [Desktop Entry]
-Encoding=UTF-8
-Name=Dwm
-Comment=Dynamic window manager
-Exec=dwm
-Icon=dwm
-Type=XSession
+Name=DWM
+Comment=This session logs you into Ubuntu
+Exec=/usr/local/bin/dwm
+Type=Application
+DesktopNames=ubuntu:dwn
+X-GDM-SessionRegisters=true
+X-Ubuntu-Gettext-Domain=gnome-session-3.0
