@@ -3,26 +3,19 @@ xrdb ~/.Xresources
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-fcitx &
-
-#set necessary keymap on start
-setxkbmap -option caps:swapescape
+pkill fcitx
+fcitx 2>/dev/null &
 
 #wallpaper
-xwallpaper --zoom /usr/share/backgrounds/PinkGirl.jpg
+[ -f  /usr/share/backgrounds/Origin_of_nature_by_Julian_Tomasini.jpg ] && \
+xwallpaper --zoom /usr/share/backgrounds/Origin_of_nature_by_Julian_Tomasini.jpg
+
+# clear mapping
+setxkbmap -option
+# set necessary keymap on start
+setxkbmap -option caps:escape
 
 ## DWM Setup ##
-#cleanup
-cat /tmp/dwm_autostart.pid | xargs -I{} kill -9 {}
-pkill sxhkd
-rm -f /tmp/dwm_autostart.pid
-ibus_input_method() {
-    if [ $(ibus engine) == "libpinyin" ]; then
-        echo -n "中"
-    else
-        echo -n "En"
-    fi
-}
 free_mem() {
     free | awk '/Mem/ {printf "Mem: %d GB/%d GB\n", $4/1024/1024, $2/1024/1024.0}'
 }
@@ -33,12 +26,6 @@ while true; do
     xsetroot -name " $(volume) | $(free_mem) | $(date)"
     read -t 1
 done &
-echo $! >> /tmp/dwm_autostart.pid
 ## End of DWM Setup ##
-
-# last statement
-exec dwm
-
-# exec xmonad
 
 # vim: set ft=sh :
