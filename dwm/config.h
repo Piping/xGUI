@@ -74,6 +74,9 @@ static const Layout layouts[] = {
 /* commands */
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+static const char *rofi_app_launcher[]  = { "bash", "-c", "rofi -dpi 1 -modi drun -show drun", NULL };
+static const char *rofi_system_menu[]  = { "bash","-c","bash ~/.config/rofi/scripts/powermenu.sh", NULL };
+static const char *screenshot[]  = { "bash","-c","scrot ~/Pictures/%Y-%m-%d-%T-screenshot.png", NULL };
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -83,6 +86,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
     { MODKEY,               XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browsercmd } },
+    { MODKEY,               XK_r,      spawn,          {.v = rofi_app_launcher } },
+    { MODKEY,               XK_x,      spawn,          {.v = rofi_system_menu } },
+    { MODKEY,               XK_s,      spawn,          {.v = screenshot } },
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	/* Switch to specific layouts */
 	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
