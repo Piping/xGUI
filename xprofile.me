@@ -6,26 +6,15 @@ export XMODIFIERS=@im=fcitx
 pkill fcitx
 fcitx 2>/dev/null &
 
-#wallpaper
-[ -f  /usr/share/backgrounds/Origin_of_nature_by_Julian_Tomasini.jpg ] && \
-xwallpaper --zoom /usr/share/backgrounds/Origin_of_nature_by_Julian_Tomasini.jpg
+# 背景设置
+BACKGROUND=/usr/share/backgrounds/Origin_of_nature_by_Julian_Tomasini.jpg 
+BACKGROUND=~/code/gui/wallpapers/Triangle-Out-Girl.jpg
+[ -f  "$BACKGROUND" ] && \
+xwallpaper --zoom "$BACKGROUND"
 
-# clear mapping
+# 重置键盘按键映射
 setxkbmap -option
-# set necessary keymap on start
+# 交换大小写锁定和Escape 
 setxkbmap -option caps:escape
-
-## DWM Setup ##
-free_mem() {
-    free | awk '/Mem/ {printf "Mem: %d GB/%d GB\n", $4/1024/1024, $2/1024/1024.0}'
-}
-volume() {
-    printf "音 %s(%s)" $(amixer get -D pulse Master | awk -F'[][]' 'END {print $2," ",$4}')
-}
-while true; do
-    xsetroot -name " $(volume) | $(free_mem) | $(date)"
-    read -t 1
-done &
-## End of DWM Setup ##
 
 # vim: set ft=sh :

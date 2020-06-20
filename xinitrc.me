@@ -1,28 +1,6 @@
-xrdb ~/.Xresources
-
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-fcitx &
-
-#set necessary keymap on start
-setxkbmap -option caps:swapescape
-
-#wallpaper
-xwallpaper --zoom /usr/share/backgrounds/PinkGirl.jpg
+# source ~/.xprofile
 
 ## DWM Setup ##
-#cleanup
-cat /tmp/dwm_autostart.pid | xargs -I{} kill -9 {}
-pkill sxhkd
-rm -f /tmp/dwm_autostart.pid
-ibus_input_method() {
-    if [ $(ibus engine) == "libpinyin" ]; then
-        echo -n "中"
-    else
-        echo -n "En"
-    fi
-}
 free_mem() {
     free | awk '/Mem/ {printf "Mem: %d GB/%d GB\n", $4/1024/1024, $2/1024/1024.0}'
 }
@@ -37,8 +15,9 @@ echo $! >> /tmp/dwm_autostart.pid
 ## End of DWM Setup ##
 
 # last statement
-exec dwm
+# exec dwm
 
+# alternative
 # exec xmonad
 
 # vim: set ft=sh :
