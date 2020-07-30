@@ -74,13 +74,3 @@ If you use a login manager (like lightdm), make sure that you have a file called
 	Type=XSession
 
 
-# Adding an autostart file
-
-DWM has been patched in such a way that it looks for an autostart file at: $HOME/.config/dwm/autostart.sh
-
-You will need to create this file and the directory that it is located.  An example autostart.sh is included below:
-
-	#! /bin/bash 
-    pkill sxhkd
-    sxhkd & # for additional keybinding
-    xsetroot -s 'top right corner status bar display'
