@@ -7,10 +7,9 @@ static const int showbar              = 1;        /* 0 means no bar */
 static const int topbar               = 1;        /* 0 means bottom bar */
 static const int horizpadbar          = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar           = 7;        /* vertical padding for statusbar */
-static const char *fonts[]            = {"InconsolataGo Nerd Font Mono Regular:size=9", 
-										 "Mononoki Nerd Font:size=9:antialias=true:autohint=true", 
-										 "Noto Sans Mono:size=9:antialias=true:autohint=true", 
-										 "Monospace:size=9:antialias=true:autohint=true"
+static const char *fonts[]            = {"Ubuntu Mono:size=12:antialias=true:autohint=true", 
+										 "Noto Sans Mono:size=12:antialias=true:autohint=true", 
+										 "Monospace:size=12:antialias=true:autohint=true"
 										};
 static const char col_gray1[]         = "#282a36";
 static const char col_gray2[]         = "#282a36"; /* border color unfocused windows */
@@ -72,23 +71,23 @@ static const Layout layouts[] = {
 };
 
 /* commands */
-static const char *termcmd[]  = { "alacritty", NULL };
-static const char *browsercmd[]  = { "firefox", NULL };
-static const char *rofi_app_launcher[]  = { "bash", "-c", "rofi -dpi 1 -modi drun -show drun", NULL };
-static const char *rofi_system_menu[]  = { "bash","-c","bash ~/.config/rofi/scripts/powermenu.sh", NULL };
-static const char *screenshot[]  = { "bash","-c","scrot ~/Pictures/%Y-%m-%d-%T-screenshot.png", NULL };
+static const char *xmenucmd[]          = { "xmenu.sh", NULL };
+static const char *launchcmd[]         = { "xmenu.sh","launchpad", NULL };
+static const char *termcmd[]           = { "xmenu.sh","terminal", NULL };
+static const char *browsercmd[]        = { "xmenu.sh","browser", NULL };
+static const char *screenshot[]        = { "xmenu.sh","screenshot", NULL };
 
 /* key definitions */
 #define MODKEY Mod4Mask
 static Key keys[] = {
 	/* modifier             key        function        argument */
-	{ MODKEY,               XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
+    { MODKEY,               XK_space,  spawn,          {.v = launchcmd } },
     { MODKEY,               XK_Return, spawn,          {.v = termcmd } },
     { MODKEY|ShiftMask,     XK_Return, spawn,          {.v = browsercmd } },
-    { MODKEY,               XK_r,      spawn,          {.v = rofi_app_launcher } },
-    { MODKEY,               XK_x,      spawn,          {.v = rofi_system_menu } },
+    { MODKEY,               XK_x,      spawn,          {.v = xmenucmd } },
     { MODKEY,               XK_s,      spawn,          {.v = screenshot } },
+	{ MODKEY,               XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,     XK_r,      quit,           {1} }, 
 	{ MODKEY,               XK_b,      togglebar,      {0} },
 	/* Switch to specific layouts */
 	/* { MODKEY,               XK_t,      setlayout,      {.v = &layouts[0]} }, */
@@ -113,16 +112,12 @@ static Key keys[] = {
 	{ MODKEY,               XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,     XK_period, tagmon,         {.i = +1 } },
-    /* Tag : each windows can have up to 32 tags
-     * dwm is a list of window clients, each can have more than one tag.
-     * We can view them by select one or more tags
-     * Super add tag to focused window
-     * Alt to view different tags*/
+    /* Tag */
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,              KEY,      view,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,    KEY,      toggleview,      {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,    KEY,      tag,             {.ui = 1 << TAG} }, \
 	{ Mod1Mask,            KEY,      toggletag_view,  {.ui = 1 << TAG} }, \
-	{ Mod1Mask|ShiftMask,  KEY,      tag,             {.ui = 1 << TAG} } 
+	{ Mod1Mask|ShiftMask,  KEY,      toggletag,       {.ui = 1 << TAG} } 
 	TAGKEYS(XK_1, 0),
 	TAGKEYS(XK_2, 1),
 	TAGKEYS(XK_3, 2),
@@ -145,11 +140,14 @@ static Button buttons[] = {
 	{ ClkStatusText,   0,           Button2,        view,           {0} },
 	{ ClkClientWin,    MODKEY,      Button1,        movemouse,      {0} },
 	{ ClkClientWin,    MODKEY,      Button3,        resizemouse,    {0} },
-	{ ClkClientWin,    MODKEY,      Button2,        togglefloating, {0} },
 	{ ClkTagBar,       0,           Button1,        view,           {0} },
 	{ ClkTagBar,       0,           Button3,        toggleview,     {0} },
 	{ ClkTagBar,       0,           Button2,        toggletag,      {0} },
 	{ ClkTagBar,       MODKEY,      Button1,        tag,            {0} },
+	{ ClkClientWin,    0,           Button2,        spawn,          {.v = xmenucmd } }, 
+	{ ClkRootWin,      0,           Button2,        spawn,          {.v = xmenucmd } },
+	{ ClkRootWin,      0,           Button3,        spawn,          {.v = xmenucmd } },
+	{ ClkStatusText,   0,           Button3,        spawn,          {.v = xmenucmd } },
 };
 
 
