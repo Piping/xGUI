@@ -87,19 +87,10 @@
   #multiplier: 3
 
 # Font configuration
-#font:
-  # Normal (roman) font face
-  #normal:
-    # Font family
-    #
-    # Default:
-    #   - (macOS) Menlo
-    #   - (Linux/BSD) monospace
-    #   - (Windows) Consolas
-    #family: monospace
-
-    # The `style` can be specified to pick a specific face.
-    #style: Regular
+font:
+  normal:
+    family: UbuntuMono Nerd Font Mono
+    style: Regular
 
   # Bold font face
   #bold:
