@@ -15,11 +15,6 @@ dwn() {
 	cp -r config/dwm ~/.config/
 }
 
-sxhkd() {
-	mkdir -p ~/.config/sxhkd/
-	cp -r config/sxhkd ~/.config/
-}
-
 rofi() {
 	mkdir -p ~/.config/rofi/
 	cp -r config/rofi/ ~/.config/
@@ -27,13 +22,11 @@ rofi() {
 
 install() {
     dwn
-    sxhkd
     rofi
 }
 
 sync() {
 	# cp -r ~/.confid/rofi config/
-	cp -r ~/.config/sxhkd config/
 	cp -r ~/.config/dwm config/
 }
 

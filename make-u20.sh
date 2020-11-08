@@ -73,10 +73,12 @@ EOF
     # reconfigure console fonts beside using setfont
     sudo dpkg-reconfigure console-setup
 
-    #now install input method for chinese and other languages
+    # now install input method for chinese and other languages
     sudo apt install fcitx-ui-classic/focal --no-install-suggests --no-install-recommends
     sudo apt install fcitx-libpinyin --no-install-suggests --no-install-recommends
     sed -i 's/IMName=.*/IMName=pinyin-libpinyin/' ~/.config/fcitx/profile
+    # required by firefox
+    sudo apt install fcitx-module-dbus fcitx-frontend-gtk2 fcitx-frontend-gtk3
 }
 
 setup() {
