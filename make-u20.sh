@@ -77,8 +77,8 @@ EOF
     sudo apt install fcitx-ui-classic/focal --no-install-suggests --no-install-recommends
     sudo apt install fcitx-libpinyin --no-install-suggests --no-install-recommends
     sed -i 's/IMName=.*/IMName=pinyin-libpinyin/' ~/.config/fcitx/profile
-    # required by firefox
-    sudo apt install fcitx-module-dbus fcitx-frontend-gtk2 fcitx-frontend-gtk3
+    # required by gtk2/3, qt5, fbterm, firefox and other gui programs
+    sudo apt install fcitx-module-dbus fcitx-frontend-all
 }
 
 setup() {
